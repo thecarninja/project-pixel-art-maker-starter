@@ -1,10 +1,16 @@
-// Select color input
-// Select size input
+function makeGrid(height, width) {
+	let htmlTableCol, htmlTableRow, loc;
+	htmlTableRow = '<tr id="row"></tr>';
+	htmlTableCol = "<td></td>";
+	
+	for (let i = 0; i < height; i++){ 
+		$("#pixelCanvas").append(htmlTableRow);
 
-// When size is submitted by the user, call makeGrid()
-
-function makeGrid() {
-
+		for (let x = 0; x < width; x++) { 
+			loc = $("#pixelCanvas").children().last();
+			$(loc).append(htmlTableCol);
+		}
+	}
 }
 
 let submitButton, newHeight, newWidth;
@@ -12,9 +18,9 @@ submitButton = $("#sizePicker").children().last();
 newHeight = $("#inputHeight").attr("min");
 newWidth = $("#inputWidth").attr("min");
 
-$(submitButton).on("click", function(evt){ //waits for submit button click
+$(submitButton).on("click", function(evt){ //submit event sends height and width to makeGrid
 	evt.preventDefault();  
-	makeGrid();
+	makeGrid(newHeight, newWidth);
 });
 
 $("#sizePicker").change(function(){ // monitors input text fields and assigns height and width
