@@ -15,8 +15,8 @@ function makeGrid(height, width) {
 
 let submitButton, newHeight, newWidth;
 submitButton = $("#sizePicker").children().last();
-newHeight = $("#inputHeight").attr("min");
-newWidth = $("#inputWidth").attr("min");
+newHeight = $("#inputHeight").val();
+newWidth = $("#inputWidth").val();
 
 $(submitButton).on("click", function(evt){ //submit event sends height and width to makeGrid
 	evt.preventDefault();  
