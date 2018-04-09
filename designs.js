@@ -26,10 +26,7 @@ $("#sizePicker").change(function(){ // monitors input text fields and assigns he
 //get value
 //submit button needs to refresh canvas
 //monitor table for click and apply color value
-let color = "#000000";
+let color = "#1F2DDF";
 $("#colorPicker").change(function(){
-	console.log($("colorPicker").value);
 	color = $(this).val();
-	console.log(color);
-
 });
