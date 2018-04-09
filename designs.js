@@ -20,6 +20,7 @@ newWidth = $("#inputWidth").attr("min");
 
 $(submitButton).on("click", function(evt){ //submit event sends height and width to makeGrid
 	evt.preventDefault();  
+	// window.location.reload();
 	makeGrid(newHeight, newWidth);
 });
 
@@ -28,11 +29,11 @@ $("#sizePicker").change(function(){ // monitors input text fields and assigns he
 	newWidth = $("#inputWidth").val();
 });
 
-//monitor color choice
-//get value
-//submit button needs to refresh canvas
-//monitor table for click and apply color value
 let color = "#1F2DDF";
-$("#colorPicker").change(function(){
+$("#colorPicker").change(function(){ //monitors color changes and assigns to color variable
 	color = $(this).val();
+});
+
+$("#pixelCanvas").on("click", "td", function(){ //assigns color to table cell
+	$(this).css("background-color", color);
 });
