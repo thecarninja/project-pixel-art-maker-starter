@@ -1,15 +1,16 @@
 function makeGrid(height, width) {
-	let htmlTableCol, htmlTableRow, loc;
+	let htmlTableCol, htmlTableRow, loc, addColumns;
 	htmlTableRow = '<tr id="row"></tr>';
 	htmlTableCol = "<td></td>";
 	
 	for (let i = 0; i < height; i++){ 
+		addColumns = "";
 		$("#pixelCanvas").append(htmlTableRow);
-
 		for (let x = 0; x < width; x++) { 
-			loc = $("#pixelCanvas").children().last();
-			$(loc).append(htmlTableCol);
+			addColumns = addColumns + htmlTableCol;
 		}
+		loc = $("#pixelCanvas").children().last();
+		$(loc).append(addColumns);
 	}
 }
 
