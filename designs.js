@@ -28,3 +28,11 @@ $("#sizePicker").change(function(){ // monitors input text fields and assigns he
 	newWidth = $("#inputWidth").val();
 });
 
+//monitor color choice
+//get value
+//submit button needs to refresh canvas
+//monitor table for click and apply color value
+let color = "#1F2DDF";
+$("#colorPicker").change(function(){
+	color = $(this).val();
+});
