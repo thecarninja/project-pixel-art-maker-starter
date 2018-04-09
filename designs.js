@@ -1,17 +1,20 @@
 function makeGrid(height, width) {
-	let htmlTableCol, htmlTableRow, loc, addColumns;
-	htmlTableRow = '<tr id="row"></tr>';
+	let htmlTableCol, htmlTableRowBegin, htmlTableRowEnd, newTable;
+	htmlTableRowBegin = '<tr>';
+	htmlTableRowEnd = '</tr>';
 	htmlTableCol = "<td></td>";
-	
-	for (let i = 0; i < height; i++){ 
-		addColumns = "";
-		$("#pixelCanvas").append(htmlTableRow);
+	newTable = "";
+
+	$("#pixelCanvas").empty(); //empties canvas
+
+	for (let i = 0; i < height; i++){  // creates table and adds to new table variable
+		newTable = newTable + htmlTableRowBegin;
 		for (let x = 0; x < width; x++) { 
-			addColumns = addColumns + htmlTableCol;
+			newTable = newTable + htmlTableCol;
 		}
-		loc = $("#pixelCanvas").children().last();
-		$(loc).append(addColumns);
+		newTable = newTable + htmlTableRowEnd;
 	}
+	$("#pixelCanvas").append(newTable); //appends complete table
 }
 
 let submitButton, newHeight, newWidth;
@@ -21,7 +24,6 @@ newWidth = $("#inputWidth").val();
 
 $(submitButton).on("click", function(evt){ //submit event sends height and width to makeGrid
 	evt.preventDefault();  
-	// window.location.reload();
 	makeGrid(newHeight, newWidth);
 });
 
