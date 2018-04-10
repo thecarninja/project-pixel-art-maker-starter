@@ -1,4 +1,4 @@
-function makeGrid(height, width) {
+function makeGrid() {
 	let htmlTableCol, htmlTableRowBegin, htmlTableRowEnd, newTable;
 	htmlTableRowBegin = '<tr>';
 	htmlTableRowEnd = '</tr>';
@@ -7,9 +7,9 @@ function makeGrid(height, width) {
 
 	$("#pixelCanvas").empty(); //empties canvas
 
-	for (let i = 0; i < height; i++){  // creates table and adds to new table variable
+	for (let i = 0; i < newHeight; i++){  // creates table and adds to new table variable
 		newTable = newTable + htmlTableRowBegin;
-		for (let x = 0; x < width; x++) { 
+		for (let x = 0; x < newWidth; x++) { 
 			newTable = newTable + htmlTableCol;
 		}
 		newTable = newTable + htmlTableRowEnd;
@@ -17,14 +17,14 @@ function makeGrid(height, width) {
 	$("#pixelCanvas").append(newTable); //appends complete table
 }
 
-let submitButton, newHeight, newWidth;
+let submitButton, newHeight, newWidth, color;
 submitButton = $("#sizePicker").children().last();
 newHeight = $("#inputHeight").val();
 newWidth = $("#inputWidth").val();
 
-$(submitButton).on("click", function(evt){ //submit event sends height and width to makeGrid
+$(submitButton).on("click", function(evt){ //submit button starts makeGrid function
 	evt.preventDefault();  
-	makeGrid(newHeight, newWidth);
+	makeGrid();
 });
 
 $("#sizePicker").change(function(){ // monitors input text fields and assigns height and width
@@ -32,7 +32,7 @@ $("#sizePicker").change(function(){ // monitors input text fields and assigns he
 	newWidth = $("#inputWidth").val();
 });
 
-let color = "#1F2DDF";
+color = "#1F2DDF";
 $("#colorPicker").change(function(){ //monitors color changes and assigns to color variable
 	color = $(this).val();
 });
